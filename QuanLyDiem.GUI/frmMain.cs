@@ -60,5 +60,10 @@ namespace QuanLyDiem.GUI
         {
             //OpenChildForm(new frmHocSinh());
         }
+
+        private void mnuLop_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmLop());
+        }
     }
 }
