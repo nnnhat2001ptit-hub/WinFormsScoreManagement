@@ -188,7 +188,7 @@
             // mnuNhapDiem
             // 
             this.mnuNhapDiem.Name = "mnuNhapDiem";
-            this.mnuNhapDiem.Size = new System.Drawing.Size(180, 22);
+            this.mnuNhapDiem.Size = new System.Drawing.Size(133, 22);
             this.mnuNhapDiem.Text = "Nhập điểm";
             this.mnuNhapDiem.Click += new System.EventHandler(this.mnuNhapDiem_Click);
             // 
@@ -204,13 +204,14 @@
             // mnuBangDiemHS
             // 
             this.mnuBangDiemHS.Name = "mnuBangDiemHS";
-            this.mnuBangDiemHS.Size = new System.Drawing.Size(179, 22);
+            this.mnuBangDiemHS.Size = new System.Drawing.Size(180, 22);
             this.mnuBangDiemHS.Text = "Bảng điểm học sinh";
+            this.mnuBangDiemHS.Click += new System.EventHandler(this.mnuBangDiemHS_Click);
             // 
             // mnuBangDiemLop
             // 
             this.mnuBangDiemLop.Name = "mnuBangDiemLop";
-            this.mnuBangDiemLop.Size = new System.Drawing.Size(179, 22);
+            this.mnuBangDiemLop.Size = new System.Drawing.Size(180, 22);
             this.mnuBangDiemLop.Text = "Bảng điểm lớp";
             // 
             // statusMain
