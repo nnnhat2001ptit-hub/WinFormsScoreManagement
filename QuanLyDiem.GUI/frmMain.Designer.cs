@@ -49,7 +49,7 @@
             this.mnuBangDiemHS = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBangDiemLop = new System.Windows.Forms.ToolStripMenuItem();
             this.statusMain = new System.Windows.Forms.StatusStrip();
-            this.lblTrangThai = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuMain.SuspendLayout();
             this.statusMain.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,7 @@
             this.menuMain.Size = new System.Drawing.Size(800, 24);
             this.menuMain.TabIndex = 1;
             this.menuMain.Text = "menuStrip1";
+            this.menuMain.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuMain_ItemClicked);
             // 
             // mnuHeThong
             // 
@@ -204,31 +205,32 @@
             // mnuBangDiemHS
             // 
             this.mnuBangDiemHS.Name = "mnuBangDiemHS";
-            this.mnuBangDiemHS.Size = new System.Drawing.Size(180, 22);
+            this.mnuBangDiemHS.Size = new System.Drawing.Size(179, 22);
             this.mnuBangDiemHS.Text = "Bảng điểm học sinh";
             this.mnuBangDiemHS.Click += new System.EventHandler(this.mnuBangDiemHS_Click);
             // 
             // mnuBangDiemLop
             // 
             this.mnuBangDiemLop.Name = "mnuBangDiemLop";
-            this.mnuBangDiemLop.Size = new System.Drawing.Size(180, 22);
+            this.mnuBangDiemLop.Size = new System.Drawing.Size(179, 22);
             this.mnuBangDiemLop.Text = "Bảng điểm lớp";
+            this.mnuBangDiemLop.Click += new System.EventHandler(this.mnuBangDiemLop_Click);
             // 
             // statusMain
             // 
             this.statusMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblTrangThai});
+            this.lblUser});
             this.statusMain.Location = new System.Drawing.Point(0, 428);
             this.statusMain.Name = "statusMain";
             this.statusMain.Size = new System.Drawing.Size(800, 22);
             this.statusMain.TabIndex = 2;
             this.statusMain.Text = "statusStrip1";
             // 
-            // lblTrangThai
+            // lblUser
             // 
-            this.lblTrangThai.Name = "lblTrangThai";
-            this.lblTrangThai.Size = new System.Drawing.Size(54, 17);
-            this.lblTrangThai.Text = "Sẵn sàng";
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(54, 17);
+            this.lblUser.Text = "Sẵn sàng";
             // 
             // frmMain
             // 
@@ -243,6 +245,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CHƯƠNG TRÌNH QUẢN LÝ ĐIỂM";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
             this.statusMain.ResumeLayout(false);
@@ -275,7 +278,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuBangDiemHS;
         private System.Windows.Forms.ToolStripMenuItem mnuBangDiemLop;
         private System.Windows.Forms.StatusStrip statusMain;
-        private System.Windows.Forms.ToolStripStatusLabel lblTrangThai;
+        private System.Windows.Forms.ToolStripStatusLabel lblUser;
+        private System.Windows.Forms.StatusStrip statusStripMain;
+
     }
 }
 

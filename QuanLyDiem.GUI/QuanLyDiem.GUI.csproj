@@ -95,6 +95,7 @@
     <Compile Include="Category\frmNamHoc.Designer.cs">
       <DependentUpon>frmNamHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Session.cs" />
     <Compile Include="Point\frmBangDiem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,12 +110,27 @@
     <Compile Include="Report\frmBangDiemHocSinh.Designer.cs">
       <DependentUpon>frmBangDiemHocSinh.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmBangDiemLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmBangDiemLop.Designer.cs">
+      <DependentUpon>frmBangDiemLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Auth\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Teaching\frmPhanCong.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Teaching\frmPhanCong.Designer.cs">
       <DependentUpon>frmPhanCong.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Auth\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Category\frmGiaoVien.resx">
       <DependentUpon>frmGiaoVien.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +170,9 @@
     <EmbeddedResource Include="Report\frmBangDiemHocSinh.resx">
       <DependentUpon>frmBangDiemHocSinh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmBangDiemLop.resx">
+      <DependentUpon>frmBangDiemLop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Teaching\frmPhanCong.resx">
       <DependentUpon>frmPhanCong.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,9 +199,7 @@
       <Name>QuanLyDiem.DAL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="System\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>

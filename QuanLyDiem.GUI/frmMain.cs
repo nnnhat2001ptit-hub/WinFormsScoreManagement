@@ -1,4 +1,6 @@
-﻿using QuanLyDiem.GUI.Point;
+﻿using QuanLyDiem.GUI.Auth;
+using QuanLyDiem.GUI.Model;
+using QuanLyDiem.GUI.Point;
 using QuanLyDiem.GUI.Report;
 using QuanLyDiem.GUI.Teaching;
 using System;
@@ -10,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace QuanLyDiem.GUI
 {
@@ -55,8 +58,22 @@ namespace QuanLyDiem.GUI
 
         private void mnuDangXuat_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Chức năng đăng xuất sẽ được xây dựng sau.",
-                            "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (MessageBox.Show("Bạn có muốn đăng xuất?", "Xác nhận",
+        MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Session.Clear();
+                this.Hide();
+
+                frmLogin login = new frmLogin();
+                if (login.ShowDialog() == DialogResult.OK)
+                {
+                    this.Show();
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
 
         private void mnuHocSinh_Click(object sender, EventArgs e)
@@ -107,6 +124,27 @@ namespace QuanLyDiem.GUI
         private void mnuBangDiemHS_Click(object sender, EventArgs e)
         {
             OpenChildForm(new frmBangDiemHocSinh());
+        }
+
+        private void mnuBangDiemLop_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new frmBangDiemLop());
+        }
+
+        private void menuMain_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            lblUser.Text = $"Xin chào: {Session.TenDangNhap} ({Session.VaiTro})";
+
+            if (Session.VaiTro == "GiaoVien")
+            {
+                mnuDanhMuc.Enabled = false;
+                mnuHeThong.Enabled = false;
+            }
         }
     }
 }
