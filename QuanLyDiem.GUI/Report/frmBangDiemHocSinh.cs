@@ -165,19 +165,35 @@ namespace QuanLyDiem.GUI.Report
 
             if (dgvBangDiem.DataSource == null) return;
 
-            dgvBangDiem.Columns["IDMon"].Visible = false;
-            dgvBangDiem.Columns["IDHS"].Visible = false;
-            dgvBangDiem.Columns["IDMon"].Visible = false;
-            dgvBangDiem.Columns["IDNamHoc"].Visible = false;
-            dgvBangDiem.Columns["IDHocKy"].Visible = false;
-            dgvBangDiem.Columns["IDLoaiDiem"].Visible = false;
+            string[] idColumns =
+     {
+        "IDHS",
+        "IDMon",
+        "IDNamHoc",
+        "IDHocKy",
+        "IDLoaiDiem"
+    };
+
+            foreach (string col in idColumns)
+            {
+                if (dgvBangDiem.Columns.Contains(col))
+                    dgvBangDiem.Columns[col].Visible = false;
+            }
 
             dgvBangDiem.Columns["TenMon"].HeaderText = "Môn học";
             dgvBangDiem.Columns["TenLoaiDiem"].HeaderText = "Loại điểm";
+            dgvBangDiem.Columns["HeSo"].HeaderText = "Hệ số";
             dgvBangDiem.Columns["Diem"].HeaderText = "Điểm";
             dgvBangDiem.Columns["NgayNhap"].HeaderText = "Ngày nhập";
 
             dgvBangDiem.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvBangDiem.RowHeadersVisible = false;
+
+            dgvBangDiem.Columns["TenMon"].DisplayIndex = 0;
+            dgvBangDiem.Columns["TenLoaiDiem"].DisplayIndex = 1;
+            dgvBangDiem.Columns["HeSo"].DisplayIndex = 2;
+            dgvBangDiem.Columns["Diem"].DisplayIndex = 3;
+            dgvBangDiem.Columns["NgayNhap"].DisplayIndex = 4;
         }
 
         private void cboNamHoc_SelectedIndexChanged(object sender, EventArgs e)
@@ -286,7 +302,9 @@ namespace QuanLyDiem.GUI.Report
             int idNamHoc = Convert.ToInt32(cboNamHoc.SelectedValue);
             int idHocKy = Convert.ToInt32(cboHocKy.SelectedValue);
 
-            dgvBangDiem.DataSource = bll.LayBangDiemHocSinh(idHS, idNamHoc, idHocKy);
+            selectedIDHS = Convert.ToInt32(cboHocSinh.SelectedValue);
+            //dgvBangDiem.DataSource = bll.LayBangDiemHocSinh(idHS, idNamHoc, idHocKy);
+            LoadBangDiem();
 
             if (dgvBangDiem.Rows.Count == 0)
             {

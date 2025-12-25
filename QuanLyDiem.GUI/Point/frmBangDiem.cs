@@ -27,7 +27,7 @@ namespace QuanLyDiem.GUI.Point
         bool isAdding = false;
         int selectedHS = 0;
         int selectedBangDiem = 0;
-
+        DataTable dtBangDiem = null;
         public frmBangDiem()
         {
             InitializeComponent();
@@ -88,7 +88,8 @@ namespace QuanLyDiem.GUI.Point
             // Set tiêu đề
             dgvHocSinh.Columns["MaHS"].HeaderText = "Mã HS";
             dgvHocSinh.Columns["HoTen"].HeaderText = "Họ tên";
-            dgvHocSinh.Columns["NgaySinh"].HeaderText = "Ngày sinh";
+            dgvHocSinh.Columns["TenLop"].HeaderText = "Lớp";
+
             dgvHocSinh.Columns.Remove("GioiTinh");
 
             DataGridViewTextBoxColumn colGT = new DataGridViewTextBoxColumn();
@@ -98,7 +99,7 @@ namespace QuanLyDiem.GUI.Point
             dgvHocSinh.Columns.Add(colGT);
 
             dgvHocSinh.Columns["DiaChi"].HeaderText = "Địa chỉ";
-            dgvHocSinh.Columns["TenLop"].HeaderText = "Lớp";
+            dgvHocSinh.Columns["NgaySinh"].HeaderText = "Ngày sinh";
 
             dgvHocSinh.Columns["MaHS"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dgvHocSinh.Columns["HoTen"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -117,12 +118,13 @@ namespace QuanLyDiem.GUI.Point
                cboMon.SelectedValue == null ||
                cboLop.SelectedValue == null) return;
 
-            dgvBangDiem.DataSource = bllBD.LayBangDiem(
+            dtBangDiem = bllBD.LayBangDiem(
                 (int)cboNamHoc.SelectedValue,
                 (int)cboHocKy.SelectedValue,
                 (int)cboMon.SelectedValue,
                 (int)cboLop.SelectedValue
             );
+            dgvBangDiem.DataSource = dtBangDiem;
 
             if (dgvBangDiem.DataSource == null) return;
 
@@ -312,6 +314,24 @@ namespace QuanLyDiem.GUI.Point
                 }
             }
 
+        }
+
+        private void txtFilterTen_TextChanged(object sender, EventArgs e)
+        {
+            if (dtBangDiem == null) return;
+
+            string text = txtFilterTen.Text.Trim().Replace("'", "''");
+
+            if (string.IsNullOrEmpty(text))
+            {
+                dgvBangDiem.DataSource = dtBangDiem;
+            }
+            else
+            {
+                DataView dv = dtBangDiem.DefaultView;
+                dv.RowFilter = $"HoTen LIKE '%{text}%'";
+                dgvBangDiem.DataSource = dv;
+            }
         }
     }
 }

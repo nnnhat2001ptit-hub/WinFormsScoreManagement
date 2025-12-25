@@ -1,7 +1,9 @@
-﻿using System;
-using System.Data;
-using System.Linq;
+﻿using QuanLyDiem.DAL;
 using QuanLyDiem.DAL.Report;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 
 namespace QuanLyDiem.BLL.Report
 {
@@ -69,12 +71,24 @@ namespace QuanLyDiem.BLL.Report
             return tb;
         }
 
+        public DataTable GetBangDiemTongKetNam(int idNamHoc, int idLop)
+        {
+            return dal.GetBangDiemTongKetNam(idNamHoc, idLop);
+        }
+
+
+
         private string XepLoai(double dtb)
         {
             if (dtb >= 8) return "Giỏi";
             if (dtb >= 6.5) return "Khá";
             if (dtb >= 5) return "Trung bình";
             return "Yếu";
+        }
+
+        public double TinhDTB_Nam(double dtbHK1, double dtbHK2)
+        {
+            return Math.Round((dtbHK1 + dtbHK2 * 2) / 3, 2);
         }
     }
 }

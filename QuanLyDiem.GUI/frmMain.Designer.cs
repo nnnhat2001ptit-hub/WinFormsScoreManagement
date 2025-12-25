@@ -82,21 +82,22 @@
             // mnuDangNhap
             // 
             this.mnuDangNhap.Name = "mnuDangNhap";
-            this.mnuDangNhap.Size = new System.Drawing.Size(132, 22);
+            this.mnuDangNhap.Size = new System.Drawing.Size(180, 22);
             this.mnuDangNhap.Text = "Đăng nhập";
+            this.mnuDangNhap.Visible = false;
             this.mnuDangNhap.Click += new System.EventHandler(this.mnuDangNhap_Click);
             // 
             // mnuDangXuat
             // 
             this.mnuDangXuat.Name = "mnuDangXuat";
-            this.mnuDangXuat.Size = new System.Drawing.Size(132, 22);
+            this.mnuDangXuat.Size = new System.Drawing.Size(180, 22);
             this.mnuDangXuat.Text = "Đăng xuất";
             this.mnuDangXuat.Click += new System.EventHandler(this.mnuDangXuat_Click);
             // 
             // mnuThoat
             // 
             this.mnuThoat.Name = "mnuThoat";
-            this.mnuThoat.Size = new System.Drawing.Size(132, 22);
+            this.mnuThoat.Size = new System.Drawing.Size(180, 22);
             this.mnuThoat.Text = "Thoát";
             this.mnuThoat.Click += new System.EventHandler(this.mnuThoat_Click);
             // 

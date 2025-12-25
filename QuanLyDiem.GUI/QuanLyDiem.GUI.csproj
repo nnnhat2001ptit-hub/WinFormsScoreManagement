@@ -122,6 +122,12 @@
     <Compile Include="Auth\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\frmChiTietBangDiemHocSinh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report\frmChiTietBangDiemHocSinh.Designer.cs">
+      <DependentUpon>frmChiTietBangDiemHocSinh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Report\frmXemChiTiet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report\frmBangDiemLop.resx">
       <DependentUpon>frmBangDiemLop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\frmChiTietBangDiemHocSinh.resx">
+      <DependentUpon>frmChiTietBangDiemHocSinh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Report\frmXemChiTiet.resx">
       <DependentUpon>frmXemChiTiet.cs</DependentUpon>

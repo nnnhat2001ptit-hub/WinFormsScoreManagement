@@ -28,12 +28,22 @@ namespace QuanLyDiem.BLL.Report
         }
 
         public DataTable LayChiTietMon(
-    int idHS,
-    int idMon,
-    int idNamHoc,
-    int idHocKy)
+            int idHS,
+            int idMon,
+            int idNamHoc,
+            int idHocKy)
         {
             return dal.GetChiTietMon(idHS, idMon, idNamHoc, idHocKy);
+        }
+
+        public DataTable GetBangDiemChiTietHocSinh(string maHS, int namHoc, int hocKy)
+        {
+            return dal.GetBangDiemChiTietHocSinh(maHS, namHoc, hocKy);
+        }
+
+        public DataTable GetBangDiemChiTietTongKetHocSinh(string maHS, int namHoc)
+        {
+            return dal.GetBangDiemChiTietTongKetHocSinh(maHS, namHoc);
         }
 
     }

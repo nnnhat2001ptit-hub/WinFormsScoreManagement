@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.grpFilter = new System.Windows.Forms.GroupBox();
+            this.cboLoaiDiem = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cboLop = new System.Windows.Forms.ComboBox();
             this.cboMon = new System.Windows.Forms.ComboBox();
             this.cboHocKy = new System.Windows.Forms.ComboBox();
@@ -41,6 +43,8 @@
             this.grpHocSinh = new System.Windows.Forms.GroupBox();
             this.dgvHocSinh = new System.Windows.Forms.DataGridView();
             this.grpBangDiem = new System.Windows.Forms.GroupBox();
+            this.txtFilterTen = new System.Windows.Forms.TextBox();
+            this.lblFilterTen = new System.Windows.Forms.Label();
             this.dgvBangDiem = new System.Windows.Forms.DataGridView();
             this.grpChucNang = new System.Windows.Forms.GroupBox();
             this.btnThoat = new System.Windows.Forms.Button();
@@ -49,8 +53,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cboLoaiDiem = new System.Windows.Forms.ComboBox();
             this.grpFilter.SuspendLayout();
             this.grpHocSinh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHocSinh)).BeginInit();
@@ -77,6 +79,23 @@
             this.grpFilter.TabIndex = 0;
             this.grpFilter.TabStop = false;
             this.grpFilter.Text = "Bộ lọc";
+            // 
+            // cboLoaiDiem
+            // 
+            this.cboLoaiDiem.FormattingEnabled = true;
+            this.cboLoaiDiem.Location = new System.Drawing.Point(1108, 32);
+            this.cboLoaiDiem.Name = "cboLoaiDiem";
+            this.cboLoaiDiem.Size = new System.Drawing.Size(150, 25);
+            this.cboLoaiDiem.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1030, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 17);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Loại điểm :";
             // 
             // cboLop
             // 
@@ -172,6 +191,8 @@
             // 
             // grpBangDiem
             // 
+            this.grpBangDiem.Controls.Add(this.txtFilterTen);
+            this.grpBangDiem.Controls.Add(this.lblFilterTen);
             this.grpBangDiem.Controls.Add(this.dgvBangDiem);
             this.grpBangDiem.ForeColor = System.Drawing.Color.Black;
             this.grpBangDiem.Location = new System.Drawing.Point(793, 140);
@@ -180,6 +201,23 @@
             this.grpBangDiem.TabIndex = 2;
             this.grpBangDiem.TabStop = false;
             this.grpBangDiem.Text = "Bảng điểm";
+            // 
+            // txtFilterTen
+            // 
+            this.txtFilterTen.Location = new System.Drawing.Point(110, -3);
+            this.txtFilterTen.Name = "txtFilterTen";
+            this.txtFilterTen.Size = new System.Drawing.Size(200, 25);
+            this.txtFilterTen.TabIndex = 0;
+            this.txtFilterTen.TextChanged += new System.EventHandler(this.txtFilterTen_TextChanged);
+            // 
+            // lblFilterTen
+            // 
+            this.lblFilterTen.AutoSize = true;
+            this.lblFilterTen.Location = new System.Drawing.Point(10, 0);
+            this.lblFilterTen.Name = "lblFilterTen";
+            this.lblFilterTen.Size = new System.Drawing.Size(83, 17);
+            this.lblFilterTen.TabIndex = 1;
+            this.lblFilterTen.Text = "Lọc theo tên:";
             // 
             // dgvBangDiem
             // 
@@ -270,23 +308,6 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1030, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 17);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Lớp :";
-            // 
-            // cboLoaiDiem
-            // 
-            this.cboLoaiDiem.FormattingEnabled = true;
-            this.cboLoaiDiem.Location = new System.Drawing.Point(1073, 32);
-            this.cboLoaiDiem.Name = "cboLoaiDiem";
-            this.cboLoaiDiem.Size = new System.Drawing.Size(150, 25);
-            this.cboLoaiDiem.TabIndex = 9;
-            // 
             // frmBangDiem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -309,6 +330,7 @@
             this.grpHocSinh.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHocSinh)).EndInit();
             this.grpBangDiem.ResumeLayout(false);
+            this.grpBangDiem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBangDiem)).EndInit();
             this.grpChucNang.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -340,5 +362,8 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.ComboBox cboLoaiDiem;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFilterTen;
+        private System.Windows.Forms.Label lblFilterTen;
+
     }
 }

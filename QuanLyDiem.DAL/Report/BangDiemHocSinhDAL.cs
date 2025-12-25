@@ -49,5 +49,31 @@ namespace QuanLyDiem.DAL.Report
             return DbHelper.ExecuteQuery("sp_BangDiem_ChiTietMon", p);
         }
 
+        public DataTable GetBangDiemChiTietHocSinh(string maHS, int namHoc, int hocKy)
+        {
+            SqlParameter[] prms =
+            {
+                new SqlParameter("@MaHS", maHS),
+                new SqlParameter("@IDNamHoc", namHoc),
+                new SqlParameter("@IDHocKy", hocKy)
+            };
+
+            return DbHelper.ExecuteQuery("sp_GetBangDiemChiTietHocSinh", prms);
+        }
+
+        public DataTable GetBangDiemChiTietTongKetHocSinh(string maHS, int idNamHoc)
+        {
+            SqlParameter[] p =
+            {
+        new SqlParameter("@MaHS", maHS),
+        new SqlParameter("@IDNamHoc", idNamHoc)
+    };
+
+            return DbHelper.ExecuteQuery(
+                "sp_GetBangDiemChiTietTongKetHocSinh",
+                p
+            );
+        }
+
     }
 }

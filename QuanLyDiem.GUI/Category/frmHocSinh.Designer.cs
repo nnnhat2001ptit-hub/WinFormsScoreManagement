@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grpThongTinHS = new System.Windows.Forms.GroupBox();
+            this.txtIDHS = new System.Windows.Forms.TextBox();
             this.cboLop = new System.Windows.Forms.ComboBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.radNu = new System.Windows.Forms.RadioButton();
@@ -50,7 +51,12 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.dgvHocSinh = new System.Windows.Forms.DataGridView();
-            this.txtIDHS = new System.Windows.Forms.TextBox();
+            this.lblSearchMaHS = new System.Windows.Forms.Label();
+            this.txtSearchMaHS = new System.Windows.Forms.TextBox();
+            this.lblSearchTenHS = new System.Windows.Forms.Label();
+            this.txtSearchTenHS = new System.Windows.Forms.TextBox();
+            this.lblSearchLop = new System.Windows.Forms.Label();
+            this.cboSearchLop = new System.Windows.Forms.ComboBox();
             this.grpThongTinHS.SuspendLayout();
             this.grpChucNang.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHocSinh)).BeginInit();
@@ -78,6 +84,15 @@
             this.grpThongTinHS.TabIndex = 0;
             this.grpThongTinHS.TabStop = false;
             this.grpThongTinHS.Text = "Thông tin học sinh";
+            // 
+            // txtIDHS
+            // 
+            this.txtIDHS.Location = new System.Drawing.Point(754, 30);
+            this.txtIDHS.Name = "txtIDHS";
+            this.txtIDHS.ReadOnly = true;
+            this.txtIDHS.Size = new System.Drawing.Size(100, 25);
+            this.txtIDHS.TabIndex = 13;
+            this.txtIDHS.Visible = false;
             // 
             // cboLop
             // 
@@ -265,30 +280,79 @@
             this.dgvHocSinh.AllowUserToAddRows = false;
             this.dgvHocSinh.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHocSinh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHocSinh.Location = new System.Drawing.Point(15, 280);
+            this.dgvHocSinh.Location = new System.Drawing.Point(15, 337);
             this.dgvHocSinh.Name = "dgvHocSinh";
             this.dgvHocSinh.ReadOnly = true;
             this.dgvHocSinh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvHocSinh.Size = new System.Drawing.Size(860, 370);
+            this.dgvHocSinh.Size = new System.Drawing.Size(860, 373);
             this.dgvHocSinh.TabIndex = 2;
             this.dgvHocSinh.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHocSinh_CellClick);
             this.dgvHocSinh.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvHocSinh_CellFormatting);
             this.dgvHocSinh.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvHocSinh_DataError);
             // 
-            // txtIDHS
+            // lblSearchMaHS
             // 
-            this.txtIDHS.Location = new System.Drawing.Point(754, 30);
-            this.txtIDHS.Name = "txtIDHS";
-            this.txtIDHS.ReadOnly = true;
-            this.txtIDHS.Size = new System.Drawing.Size(100, 25);
-            this.txtIDHS.TabIndex = 13;
-            this.txtIDHS.Visible = false;
+            this.lblSearchMaHS.AutoSize = true;
+            this.lblSearchMaHS.Location = new System.Drawing.Point(12, 294);
+            this.lblSearchMaHS.Name = "lblSearchMaHS";
+            this.lblSearchMaHS.Size = new System.Drawing.Size(47, 17);
+            this.lblSearchMaHS.TabIndex = 3;
+            this.lblSearchMaHS.Text = "Mã HS";
+            // 
+            // txtSearchMaHS
+            // 
+            this.txtSearchMaHS.Location = new System.Drawing.Point(62, 291);
+            this.txtSearchMaHS.Name = "txtSearchMaHS";
+            this.txtSearchMaHS.Size = new System.Drawing.Size(120, 25);
+            this.txtSearchMaHS.TabIndex = 4;
+            this.txtSearchMaHS.TextChanged += new System.EventHandler(this.txtSearchMaHS_TextChanged);
+            // 
+            // lblSearchTenHS
+            // 
+            this.lblSearchTenHS.AutoSize = true;
+            this.lblSearchTenHS.Location = new System.Drawing.Point(202, 294);
+            this.lblSearchTenHS.Name = "lblSearchTenHS";
+            this.lblSearchTenHS.Size = new System.Drawing.Size(47, 17);
+            this.lblSearchTenHS.TabIndex = 5;
+            this.lblSearchTenHS.Text = "Họ tên";
+            // 
+            // txtSearchTenHS
+            // 
+            this.txtSearchTenHS.Location = new System.Drawing.Point(257, 291);
+            this.txtSearchTenHS.Name = "txtSearchTenHS";
+            this.txtSearchTenHS.Size = new System.Drawing.Size(200, 25);
+            this.txtSearchTenHS.TabIndex = 6;
+            this.txtSearchTenHS.TextChanged += new System.EventHandler(this.txtSearchTenHS_TextChanged);
+            // 
+            // lblSearchLop
+            // 
+            this.lblSearchLop.AutoSize = true;
+            this.lblSearchLop.Location = new System.Drawing.Point(482, 294);
+            this.lblSearchLop.Name = "lblSearchLop";
+            this.lblSearchLop.Size = new System.Drawing.Size(30, 17);
+            this.lblSearchLop.TabIndex = 7;
+            this.lblSearchLop.Text = "Lớp";
+            // 
+            // cboSearchLop
+            // 
+            this.cboSearchLop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSearchLop.Location = new System.Drawing.Point(522, 291);
+            this.cboSearchLop.Name = "cboSearchLop";
+            this.cboSearchLop.Size = new System.Drawing.Size(120, 25);
+            this.cboSearchLop.TabIndex = 8;
+            this.cboSearchLop.SelectedIndexChanged += new System.EventHandler(this.cboSearchLop_SelectedIndexChanged);
             // 
             // frmHocSinh
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 864);
+            this.ClientSize = new System.Drawing.Size(897, 722);
+            this.Controls.Add(this.lblSearchMaHS);
+            this.Controls.Add(this.txtSearchMaHS);
+            this.Controls.Add(this.lblSearchTenHS);
+            this.Controls.Add(this.txtSearchTenHS);
+            this.Controls.Add(this.lblSearchLop);
+            this.Controls.Add(this.cboSearchLop);
             this.Controls.Add(this.dgvHocSinh);
             this.Controls.Add(this.grpChucNang);
             this.Controls.Add(this.grpThongTinHS);
@@ -303,6 +367,7 @@
             this.grpChucNang.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvHocSinh)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -331,5 +396,14 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvHocSinh;
         private System.Windows.Forms.TextBox txtIDHS;
+        private System.Windows.Forms.Label lblSearchMaHS;
+        private System.Windows.Forms.TextBox txtSearchMaHS;
+
+        private System.Windows.Forms.Label lblSearchTenHS;
+        private System.Windows.Forms.TextBox txtSearchTenHS;
+
+        private System.Windows.Forms.Label lblSearchLop;
+        private System.Windows.Forms.ComboBox cboSearchLop;
+
     }
 }

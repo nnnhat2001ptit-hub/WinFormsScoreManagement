@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -138,12 +139,15 @@ namespace QuanLyDiem.GUI
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            lblUser.Text = $"Xin chào: {Session.TenDangNhap} ({Session.VaiTro})";
-
-            if (Session.VaiTro == "GiaoVien")
+            lblUser.Text = $"Xin chào: {Session.HoTen}";
+            if (Session.VaiTro == "gv")
             {
-                mnuDanhMuc.Enabled = false;
-                mnuHeThong.Enabled = false;
+                mnuDanhMuc.Visible = false;
+                mnuGiangDay.Visible = false;
+            } else
+            {
+                mnuDanhMuc.Visible = true;
+                mnuGiangDay.Visible = true;
             }
         }
     }

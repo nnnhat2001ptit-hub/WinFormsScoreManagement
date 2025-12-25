@@ -15,6 +15,7 @@ namespace QuanLyDiem.GUI
     {
         HocSinhBLL bll = new HocSinhBLL();
         private bool isAdding = false;
+        DataTable dtHocSinh = null;
 
         public frmHocSinh()
         {
@@ -26,6 +27,13 @@ namespace QuanLyDiem.GUI
             LoadLop();
             LoadHS();
             SetControls(false);
+
+            dtpNgaySinh.Format = DateTimePickerFormat.Custom;
+            dtpNgaySinh.CustomFormat = "dd/MM/yyyy";
+
+            LoadSearchLop();
+
+
             dgvHocSinh.DataError += dgvHocSinh_DataError;
         }
 
@@ -39,13 +47,15 @@ namespace QuanLyDiem.GUI
 
         private void LoadHS()
         {
-            dgvHocSinh.DataSource = bll.LayDanhSachHS();
+            dtHocSinh = bll.LayDanhSachHS();
+            dgvHocSinh.DataSource = dtHocSinh;
 
             dgvHocSinh.Columns["IDHS"].Visible = false;   
             dgvHocSinh.Columns["MaHS"].HeaderText = "Mã HS";
             dgvHocSinh.Columns["HoTen"].HeaderText = "Họ tên";
             dgvHocSinh.Columns["NgaySinh"].HeaderText = "Ngày sinh";
-            dgvHocSinh.Columns.Remove("GioiTinh");  
+            dgvHocSinh.Columns["NgaySinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            dgvHocSinh.Columns.Remove("GioiTinh");
 
             DataGridViewTextBoxColumn colGT = new DataGridViewTextBoxColumn();
             colGT.Name = "GioiTinh";
@@ -223,5 +233,70 @@ namespace QuanLyDiem.GUI
         {
             e.Cancel = true;
         }
+
+        private void FilterHocSinh()
+        {
+            if (dtHocSinh == null) return;
+
+            string ma = txtSearchMaHS.Text.Trim().Replace("'", "''");
+            string ten = txtSearchTenHS.Text.Trim().Replace("'", "''");
+            string lop = "";
+
+            if (cboSearchLop.SelectedValue != null &&
+                cboSearchLop.SelectedValue != DBNull.Value &&
+                cboSearchLop.SelectedValue is int)
+            {
+                lop = cboSearchLop.SelectedValue.ToString();
+            }
+
+
+            List<string> filters = new List<string>();
+
+            if (!string.IsNullOrEmpty(ma))
+                filters.Add($"MaHS LIKE '%{ma}%'");
+
+            if (!string.IsNullOrEmpty(ten))
+                filters.Add($"HoTen LIKE '%{ten}%'");
+
+            if (!string.IsNullOrEmpty(lop))
+                filters.Add($"IDLop = {lop}");
+
+            DataView dv = new DataView(dtHocSinh);
+            dv.RowFilter = string.Join(" AND ", filters);
+
+            dgvHocSinh.DataSource = dv;
+        }
+
+        private void txtSearchMaHS_TextChanged(object sender, EventArgs e)
+        {
+            FilterHocSinh();
+        }
+
+        private void txtSearchTenHS_TextChanged(object sender, EventArgs e)
+        {
+            FilterHocSinh();
+        }
+
+        private void cboSearchLop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterHocSinh();
+        }
+
+
+        private void LoadSearchLop()
+        {
+            DataTable dtLop = bll.LayDanhSachLop();
+
+            DataRow rowAll = dtLop.NewRow();
+            rowAll["IDLop"] = DBNull.Value;   
+            rowAll["TenLop"] = "Tất cả";
+            dtLop.Rows.InsertAt(rowAll, 0);
+
+            cboSearchLop.DataSource = dtLop;
+            cboSearchLop.DisplayMember = "TenLop";
+            cboSearchLop.ValueMember = "IDLop";
+            cboSearchLop.SelectedIndex = 0; 
+        }
+
     }
 }

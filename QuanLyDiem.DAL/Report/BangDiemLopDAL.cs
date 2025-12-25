@@ -16,5 +16,16 @@ namespace QuanLyDiem.DAL.Report
 
             return DbHelper.ExecuteQuery("sp_BaoCao_BangDiemLop", p);
         }
+
+        public DataTable GetBangDiemTongKetNam(int idNamHoc, int idLop)
+        {
+            SqlParameter[] p =
+            {
+                new SqlParameter("@IDNamHoc", idNamHoc),
+                new SqlParameter("@IDLop", idLop)
+            };
+
+            return DbHelper.ExecuteQuery("sp_BaoCao_BangDiemTongKetNam", p);
+        }
     }
 }

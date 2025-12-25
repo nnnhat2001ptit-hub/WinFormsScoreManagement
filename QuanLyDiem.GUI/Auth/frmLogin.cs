@@ -42,6 +42,7 @@ namespace QuanLyDiem.GUI.Auth
             Session.IDTK = Convert.ToInt32(row["IDTK"]);
             Session.TenDangNhap = row["TenDangNhap"].ToString();
             Session.VaiTro = row["VaiTro"].ToString();
+            Session.HoTen = row["HoTen"].ToString();
 
             this.DialogResult = DialogResult.OK;
             this.Close();
